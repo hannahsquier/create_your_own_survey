@@ -1,0 +1,11 @@
+
+<% @mc_question.options.each do
+<%= form_for [:mc_question, @option] do |f| %>
+  <div>
+    <%= f.label :option, "Option #1" %>
+    <%= f.text_field :option %>
+  </div>
+
+
+  <%= f.submit "Create Option" %>
+<% end %>

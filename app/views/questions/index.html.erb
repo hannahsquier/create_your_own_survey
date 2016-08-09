@@ -10,6 +10,9 @@
      <br>
 
     Type: <%= question.question_type.classify.constantize %>
+
+    <%= link_to 'Edit Question', edit_survey_path(@survey.id) %><br>
+
   <hr>
 <% end %>
 

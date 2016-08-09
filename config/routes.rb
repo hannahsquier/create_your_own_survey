@@ -4,18 +4,19 @@ Rails.application.routes.draw do
   resources :surveys do
     resources :range_questions,
               defaults: { q_type: 'RangeQuestion'},
-              except: [:index, :show]
+              except: [:index, :show], shallow: :true
 
     resources :mc_questions,
               defaults: { q_type: 'McQuestion'},
-              except: [:index, :show] do
+              except: [:index, :show], shallow: :true do
 
-              resources :mc_options
-
+                resources :mc_options
               end
 
+
+
     resources :questions,
-              only: [:index]
+              only: [:index], shallow: :true
 
 
   end

@@ -1,20 +1,29 @@
-<%= form_for [:survey, @mc_question] do |f| %>
+<%= form_for [:survey, @mc_question] do |question_field| %>
   <div>
-    <%= f.label :question_text, "What question would you like to ask?" %>
-    <%= f.text_field :question_text %>
+    <%= question_field.label :question_text, "What question would you like to ask?" %>
+    <%= question_field.text_field :question_text %>
   </div>
   <div>
-    <%= f.label :num_options, "How many answer options will this question have?" %>
-    <%= f.number_field :num_options %>
+    <%= question_field.label :num_options, "How many answer options will this question have?" %>
+    <%= question_field.number_field :num_options %>
   </div>
 
   <div>
-    <%= f.label :required, "Should this question be required?" %>
-    <%= f.radio_button :required, true %> Yes
-    <%= f.radio_button :required, false %> No
+    <%= question_field.label :required, "Should this question be required?" %>
+    <%= question_field.radio_button :required, true %> Yes
+    <%= question_field.radio_button :required, false %> No
 
   </div>
 
-  <%= f.submit "Create Question" %>
+  <% if params[:mc_question] %>
+  <% params[:mc_question][:num_options].to_i.times do %>
+    <%= question_field.fields_for :options, @mc_question.options.build do |option_fields| %>
+      <%= option_fields.label :option %>
+      <%= option_fields.text_field :option %>
+    <% end %>
+  <% end %>
+  <% end %>
+
+  <%= question_field.submit "Create Question" %>
 <% end %>
 

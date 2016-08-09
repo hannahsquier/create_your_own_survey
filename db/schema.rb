@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808220626) do
+ActiveRecord::Schema.define(version: 20160809044115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "mc_options", force: :cascade do |t|
-    t.string   "option",         null: false
+    t.string   "option"
     t.integer  "mc_question_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20160808220626) do
 
   create_table "mc_questions", force: :cascade do |t|
     t.integer  "survey_id"
-    t.text     "question_text", null: false
-    t.integer  "num_options",   null: false
-    t.boolean  "required",      null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.text     "question_text",             null: false
+    t.integer  "num_options",   default: 0, null: false
+    t.boolean  "required",                  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "mc_questions", ["survey_id"], name: "index_mc_questions_on_survey_id", using: :btree

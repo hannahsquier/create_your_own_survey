@@ -1,8 +1,11 @@
 class McOptionsController < ApplicationController
   def new
-    @survey = survey.find(params[:survey_id])
     @mc_question = McQuestion.find(params[:mc_question_id])
-    @option = McOption.build
+
+    @mc_question.num_options.times do
+      @mc_question.options << @mc_question.options.build
+    end
+
   end
 
   def create
