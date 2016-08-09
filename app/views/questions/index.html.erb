@@ -1,0 +1,21 @@
+<h1><%= @survey.title %></h1>
+<h3><%= @survey.description %></h3>
+
+<% @survey.questions.each do |question| %>
+
+  <%= question.question_type
+    .classify.constantize
+    .find(question.question_id).question_text %>
+
+     <br>
+
+    Type: <%= question.question_type.classify.constantize %>
+  <hr>
+<% end %>
+
+
+<%= link_to 'New Multiple Choice Question', new_survey_mc_question_path %><br>
+<%= link_to 'New Range Question', new_survey_range_question_path %><br>
+<hr>
+<%= link_to 'Edit Survey', edit_survey_path(@survey.id) %><br>
+<%= link_to 'Delete Survey',  @survey,  method: :delete, data: { confirm: 'Are you sure?' } %>

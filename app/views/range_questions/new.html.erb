@@ -1,0 +1,23 @@
+<%= form_for [:survey, @range_question] do |f| %>
+  <div>
+    <%= f.label :question_text, "What question would you like to ask?" %>
+    <%= f.text_field :question_text %>
+  </div>
+  <div>
+    <%= f.label :min %>
+    <%= f.number_field :min %>
+  </div>
+  <div>
+    <%= f.label :max %>
+    <%= f.number_field :max %>
+  </div>
+
+  <div>
+    <%= f.label :required, "Should this question be required?" %>
+    <%= f.radio_button :required, true %> Yes
+    <%= f.radio_button :required, false %> No
+
+  </div>
+
+  <%= f.submit "Create Question" %>
+<% end %>

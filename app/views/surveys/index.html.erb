@@ -1,0 +1,12 @@
+<h1 class="text-center">Your Surveys</h1>
+
+<% @surveys.each do |survey| %>
+  <div>
+  <%= link_to survey_questions_path(survey_id: survey.id) do %>
+    <h2><%= survey.title %></h2>
+  <% end %>
+    <p><%= survey.description %></p>
+
+  </div>
+
+<% end %>
