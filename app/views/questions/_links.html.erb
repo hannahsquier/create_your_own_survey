@@ -2,13 +2,13 @@
 
 <%= link_to 'Edit Survey Title/Description', edit_survey_path(@survey.id) %><br>
 <%= link_to 'Delete Survey',  @survey,  method: :delete, data: { confirm: 'Are you sure?' } %>
-<br><br>
+<br><hr>
 
 <%= link_to "<button class='btn btn-warning'>Take Survey</button>".html_safe, new_survey_survey_response_path %>
-<%= link_to "<button class='btn btn-info'>View Survey Results</button>".html_safe, '#' %>
+<%= link_to "<button class='btn btn-info'>View Survey Results</button>".html_safe, result_path(@survey.id) %>
 
 <br><hr>
-<h3>New Questions</h3>
+<h3>New Question</h3>
 <%= link_to "<button class='btn btn-primary'>New Multiple Choice Question</button>".html_safe, new_survey_mc_question_path %>
 <%= link_to "<button class='btn btn-success'>New Range Type Question</button>".html_safe, new_survey_range_question_path %>
 

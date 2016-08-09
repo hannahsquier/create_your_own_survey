@@ -1,0 +1,19 @@
+<h1>Results for Your Survey: <%= @survey.title %></h1>
+
+<% @results.each do |question, answers| %>
+
+  <h3><%= question.question_text %></h3>
+
+  <table class="table">
+  <tr>
+    <th>Answer</th>
+    <th>Tally</th>
+  </tr>
+  <% answers.each do |answer, tally| %>
+    <tr>
+      <td><%= answer %></td>
+      <td><%= tally %></td>
+    </tr>
+  <% end %>
+   </table>
+<% end %>

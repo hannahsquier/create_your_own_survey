@@ -17,7 +17,10 @@
       <% q.options.each do | option | %>
         <div class="radio">
           <label>
-            <input type="radio" name="question_responses[<%= question.id %>]" value="<%= option.id %>"/>
+            <input type="radio" name="question_responses[<%= question.id %>]" value="<%= option.id %>"
+            <% if q.required %>
+            required="required"
+          <% end %>>
             <%= option.option %>
           </label>
         </div>
@@ -32,7 +35,11 @@
       <% (q.min..q.max).to_a.each do |n| %>
         <div class="radio-inline">
         <label>
-          <input type="radio" name="question_responses[<%= question.id %>]" value="<%= n %>"/>
+          <input type="radio" name="question_responses[<%= question.id %>]" value="<%= n %>"
+          <% if q.required %>
+            required="required"
+          <% end %>
+          >
           <%= n %>
         </label>
       </div>
@@ -42,5 +49,7 @@
     <% num += 1 %>
   <% end %>
 
-  <input type="submit">
+  <input type="submit" class="btn btn-success">
 </form>
+
+<hr>

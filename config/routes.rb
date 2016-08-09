@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :survey_responses, only: [:new, :create], shallow: :true
 
+    resources :results, only: [:show], shallow: :true
 
   end
 

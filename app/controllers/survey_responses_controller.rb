@@ -11,9 +11,9 @@ class SurveyResponsesController < ApplicationController
                               answer: response.to_i)
 
      end
-     asdf
-     flash[:success] = "Thank you for your input."
-      redirect_to survey_questions_path(survey_id: params[:survey_id])
+
+    flash[:success] = "Thank you for your input."
+    redirect_to survey_questions_path(survey_id: params[:survey_id])
 
   end
 
