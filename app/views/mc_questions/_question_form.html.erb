@@ -1,0 +1,15 @@
+ <div class="form-group">
+    <%= question_field.label :question_text, "What question would you like to ask?" %>
+    <%= question_field.text_field :question_text, class: "form-control", required: true %>
+  </div>
+  <div class="form-group">
+    <%= question_field.label :num_options, "How many answer options will this question have?" %>
+    <%= question_field.number_field :num_options, class: "form-control" , required: true%>
+  </div>
+
+  <div class="form-inline">
+    <%= question_field.label :required, "Should this question be required?" %>
+    <%= question_field.radio_button :required, true, required: 'required' %> Yes
+    <%= question_field.radio_button :required, false , required: 'required'%> No
+
+  </div>

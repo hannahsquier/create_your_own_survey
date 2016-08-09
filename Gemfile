@@ -28,6 +28,8 @@ gem 'hirb'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'pg'
+
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

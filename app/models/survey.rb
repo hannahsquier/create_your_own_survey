@@ -10,4 +10,6 @@ class Survey < ActiveRecord::Base
             through: :questions,
             source: :question,
             source_type: 'RangeQuestion'
+
+  has_many :survey_responses
 end

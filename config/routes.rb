@@ -8,15 +8,14 @@ Rails.application.routes.draw do
 
     resources :mc_questions,
               defaults: { q_type: 'McQuestion'},
-              except: [:index, :show], shallow: :true do
-
-                resources :mc_options
-              end
+              except: [:index, :show], shallow: :true
 
 
 
     resources :questions,
               only: [:index], shallow: :true
+
+    resources :survey_responses, only: [:new, :create], shallow: :true
 
 
   end

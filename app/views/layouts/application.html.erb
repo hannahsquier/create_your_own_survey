@@ -24,9 +24,11 @@
     </div>
   <% end %>
 
-  <nav>
-    <%= link_to "All Surveys", surveys_path %>
-    <%= link_to "New Survey", new_survey_path %>
+  <nav class="nav navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "All Surveys", surveys_path %></li>
+      <li><%= link_to "New Survey", new_survey_path %></li>
+    </ul>
   </nav>
 
   <div class="container">

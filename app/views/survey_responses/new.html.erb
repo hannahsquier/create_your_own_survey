@@ -1,0 +1,46 @@
+<% num = 1 %>
+
+<h1><%= @survey.title %></h1>
+<h5><%= @survey.description %></h5>
+
+<form accept-charset="UTF-8" class="form form-horizontal" action="/surveys/<%= @survey.id %>/survey_responses" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="hidden" name="response_id" value="<%= @response.id %>">
+
+  <% @survey.questions.each do |question| %>
+    <% q = get_question_object(question) %>
+
+    <% if q.class.name == 'McQuestion' %>
+      <fieldset>
+      <legend><%= "#{num.to_s}. #{q.question_text}" %></legend>
+
+      <% q.options.each do | option | %>
+        <div class="radio">
+          <label>
+            <input type="radio" name="question_responses[<%= question.id %>]" value="<%= option.id %>"/>
+            <%= option.option %>
+          </label>
+        </div>
+      <% end %>
+    </fieldset>
+    <br>
+
+    <% else %>
+      <fieldset>
+      <legend><%= "#{num.to_s}. #{q.question_text} (on a scale from #{q.min} to #{q.max})" %></legend>
+
+      <% (q.min..q.max).to_a.each do |n| %>
+        <div class="radio-inline">
+        <label>
+          <input type="radio" name="question_responses[<%= question.id %>]" value="<%= n %>"/>
+          <%= n %>
+        </label>
+      </div>
+      <% end %>
+    </fieldset>
+    <% end %>
+    <% num += 1 %>
+  <% end %>
+
+  <input type="submit">
+</form>

@@ -1,0 +1,15 @@
+<h1>Edit Question</h1>
+
+<%= form_for [ @mc_question] do |question_field| %>
+  <%= render 'question_form', question_field: question_field %>
+
+  <div class="form-group">
+    <%= question_field.fields_for :options do |option_fields| %>
+      <%= option_fields.label :option %>
+      <%= option_fields.text_field :option, class: "form-control" %>
+    <% end %>
+  </div>
+
+  <%= question_field.submit "Edit Question", class: "btn btn-prmary" %>
+<% end %>
+

@@ -1,0 +1,8 @@
+Options:
+<ul>
+  <% get_question_object(question).options.each do |option| %>
+
+    <li><%= option.option %></li>
+  <% end %>
+
+</ul>
